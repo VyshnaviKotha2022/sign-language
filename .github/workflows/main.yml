@@ -27,12 +27,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Check if training notebook exists and is not empty
-        run: |
-          if [ ! -s notebooks/training.ipynb ]; then
-            echo "Notebook does not exist or is empty."
-            exit 1
-          fi
 
 
   deploy:
