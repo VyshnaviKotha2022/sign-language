@@ -32,15 +32,6 @@ jobs:
           pip install jupyter
           jupyter nbconvert --to notebook --execute training.ipynb
 
-      - name: Upload Model Artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: model-files
-          path: |
-            model/sign_language_model.h5
-            model/scaler.pkl
-            model/label_encoder.pkl
-
   deploy:
     name: Deploy (placeholder)
     needs: build
@@ -48,12 +39,6 @@ jobs:
     if: github.ref == 'refs/heads/main'
 
     steps:
-      - name: Download Artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: model-files
-          path: model/
-
       # You can choose one of these deploy options below:
       # Option A: Deploy to Streamlit sharing (manual push step)
       # Option B: Docker build and push (below is Docker example)
