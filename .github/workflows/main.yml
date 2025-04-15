@@ -26,7 +26,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-
   deploy:
     name: Deploy (placeholder)
     needs: build
@@ -36,8 +35,11 @@ jobs:
     steps:
       - name: Set up Docker
         uses: docker/setup-buildx-action@v3
+        if: false # Skip Docker setup if no build step is needed
 
-      - name: Build and Push Docker Image
+      - name: Deploy without Docker (placeholder)
         run: |
-          docker build -t your-docker-username/chsw:latest .
-          docker push your-docker-username/chsw:latest
+          # You can add the deployment script here, if you're not using Docker.
+          echo "Deploying your app!"
+
+  
