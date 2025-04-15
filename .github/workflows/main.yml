@@ -37,7 +37,12 @@ jobs:
       - name: Run training notebook (optional)
         run: |
           pip install jupyter
-          jupyter nbconvert --to notebook --execute notebooks/training.ipynb
+            if [ ! -s notebooks/training.ipynb ]; then
+            echo "❌ Notebook does not exist or is empty."
+            exit 1
+            fi
+            jupyter nbconvert --to notebook --execute notebooks/training.ipynb
+
 
   deploy:
     name: Deploy (placeholder)
